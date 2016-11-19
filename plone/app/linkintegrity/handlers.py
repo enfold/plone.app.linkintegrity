@@ -79,7 +79,10 @@ def findObject(base, path):
     # on a view or skinscript to do this for us.
     if 'resolveuid' in components:
         uid = components[components.index('resolveuid') + 1]
-        obj = _resolveUID(uid)
+        try:
+            obj = _resolveUID(uid)
+        except:
+            return None, path
         if obj:
             return obj, path
 
